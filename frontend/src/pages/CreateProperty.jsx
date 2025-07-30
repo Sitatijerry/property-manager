@@ -30,7 +30,7 @@ const CreateProperty = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/properties", formData, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/properties`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

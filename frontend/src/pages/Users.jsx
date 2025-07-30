@@ -15,7 +15,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users", {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data);
@@ -31,7 +31,7 @@ const Users = () => {
     if (!window.confirm("Delete this user?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers((prev) => prev.filter((u) => u._id !== id));
@@ -44,7 +44,7 @@ const Users = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/users", formData, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFormData({
@@ -55,7 +55,7 @@ const Users = () => {
       });
 
       // Refresh the user list
-      const res = await axios.get("http://localhost:5000/api/users", {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);

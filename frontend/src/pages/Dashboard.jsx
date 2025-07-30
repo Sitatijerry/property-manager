@@ -12,7 +12,7 @@ const Dashboard = () => {
       return;
     }
     axios
-      .get("http://localhost:5000/api/protected", {
+      .get(`${import.meta.env.VITE_API_BASE_URL}/properties`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setUser(res.data))

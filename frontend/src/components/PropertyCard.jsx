@@ -22,7 +22,7 @@ const PropertyCard = ({
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/properties/${_id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/properties${_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
